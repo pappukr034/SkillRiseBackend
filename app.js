@@ -15,14 +15,18 @@ const app=express();
 
 // Basi configuration
 app.use(express.json())
-app.use(cors({credentials: true, origin: [process.env.FRONTEND_URL]}))
+app.use(cors({
+    credentials: true, 
+    origin: [process.env.FRONTEND_URL],
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE'
+}))
 app.use(express.urlencoded({extended:true}))
 app.use(cookieParser())
 app.use(morgan('dev'))
 
 
 
-app.get('/',(req,res)=>{
+     app.get('/',(req,res)=>{
     res.send('Hello world')
     })
     app.use('/ping',(req,res)=>{
